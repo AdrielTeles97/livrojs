@@ -1,0 +1,9 @@
+<meta charset="UTF-8">
+<script>
+    //Programa de desconto e parcelas loja
+    const productValue = Number(prompt("Valor do produto: "));
+    const discountOnValue = productValue - (productValue * 0.10);
+    const installmentValue = productValue / 3;
+    
+    alert(`Preço: ${productValue.toFixed(2)}\n À vista R$: ${discountOnValue.toFixed(2)}\n Ou 3x de R$: ${installmentValue.toFixed(2)}`);
+</script>
