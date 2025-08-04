@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+img.normal {
+    float: left;
+    height: 300px;
+    width: 300px;
+}
+
+img.alta {
+    float: left;
+    height: 420px;
+    width: 300px;
+}
+
+h1 {
+    border-bottom-style: inset;
+}
+
+pre {
+    font-size: 1.2em;
+}
