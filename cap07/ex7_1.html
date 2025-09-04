@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAP 07 - Exercício 1</title>
+</head>
+<body>
+    <script>
+        const anuncio = prompt("Digite o anuncio: ")
+        let contadorPalavra = 0
+        const tamanhoPalavra = anuncio.length
+
+        for (const letra of anuncio) {
+            if (letra == " ") {
+                contadorPalavra++
+            }
+        }
+        
+        alert(`Anúncio: ${anuncio}\n Quantidade de palavras: ${contadorPalavra + 1}`)
+    </script>
+    
+</body>
+</html>
