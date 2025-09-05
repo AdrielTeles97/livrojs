@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap 07 - exe 3</title>
+</head>
+<body>
+    <script>
+        const palavra = prompt("Digite a palavra: ")
+        const tam = palavra.length
+
+        let reverso = palavra.charAt(tam - 1).toUpperCase()
+
+        for (let i = tam - 2; i >= 0; i--) {
+            reverso += palavra.charAt(i).toLowerCase()
+        }
+
+        alert(`Palavra: ${palavra}\n Inverso: ${reverso}`)
+    </script>
+    
+</body>
+</html>
