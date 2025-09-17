@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 h1 { border-bottom-style: inset; }  
 pre { font-size: 1.2em; }
 img.normal { float: left; height: 300px; width: 300px; }
@@ -9,3 +10,7 @@ select { width: 150px; }
 .oculta { display: none; }
 .exibe { display: inline; }
 .exibe-linha { display: block; }  /* para exibir no último exercício, o parágrafo em uma linha */
+
+body {
+    font-family: "Manrope", sans-serif;
+}
