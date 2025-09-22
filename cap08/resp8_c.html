@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESP C</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="shortcut icon" href="./img/livrojs.png" type="image/x-icon">
+</head>
+<body>
+    <img src="./img/exerc.jpg" alt="Veterinária Avenida" class="normal">
+    <h1>Veterinária Avenida</h1>
+    <form>
+        <p>Valor da vacina:
+            <input type="number" id="inValor" required>
+        </p>
+        <p>
+            Possui Convênio:
+            <input type="radio" name="convenio" id="rbSim" checked> Sim
+            <input type="radio" name="convenio" id="rbNao"> Não
+        </p>
+        <p id="inConvenio" class="oculta">
+            Convênio:
+            <select id="selecao">
+                <option value="amigo">Amigos dos animais</option>
+                <option value="saude">Saúde Animal</option>
+            </select>
+        </p>
+        <input type="submit" value="Calcular Desconto">
+        
+    </form>
+    <h3 id="outResp1"></h3>
+    <h3 id="outResp2"></h3>
+    <script src="./js/resp8_c.js"></script>
+</body>
+</html>
