@@ -1,6 +1,7 @@
 const frm = document.querySelector("form")
 const imClube = document.querySelector("#imgClube")
 const dvTitulo = document.querySelector("#divTitulo")
+const textVisita = document.querySelector("#textVisita")
 
 const trocarClube = () => {
     let clube //variável que irá receber o nome do clube
@@ -45,5 +46,22 @@ const verificarClube = () => {
     }
 }
 
+const verificarVisita = () => {
+    let visitas
+    //verifica se tem algo preenchido em visitas
+    if(!localStorage.getItem("visita")) {
+        textVisita.textContent = `Muito bem vindo! está é sua primeira visita ao nosso site.`
+        visitas = 1
+    } else {
+        visitas = Number(localStorage.getItem("visita")) + 1
+        textVisita.textContent = `Que bom que você voltou! Está é sua visita de número ${visitas} ao nosso site`
+    }
+
+    localStorage.setItem("visita", visitas)
+}
+
 //ao carregar a página, verifica se cliente já selecionou clube anteriormente
-window.addEventListener("load", verificarClube)
+window.addEventListener("load", () => {
+    verificarClube()
+    verificarVisita()
+})

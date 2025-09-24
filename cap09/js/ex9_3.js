@@ -2,6 +2,7 @@ const frm = document.querySelector("form")
 const respLista = document.querySelector("pre")
 
 frm.addEventListener("submit", (e) => {
+    e.preventDefault()
     const nome = frm.inNome.value
     const peso = Number(frm.inPeso.value)
 
@@ -43,7 +44,7 @@ const mostrarApostas = () => {
     //se não há apostas armazenadas em localStorage
     if(!localStorage.getItem("melanciaNome")){
         //limpa o espaço de exibição das apostas (para quando "Limpar Apostas")
-        respLista = ""
+        respLista.innerText = ""
         return
     }
 
@@ -55,7 +56,7 @@ const mostrarApostas = () => {
     let linhas = "" // irá acumular as linhas a serem exibidas
 
     //repetição para percorrer todos os elementos do vetor
-    for (let i = 0; i <= nome.length; i++) {
+    for (let i = 0; i < nome.length; i++) {
         linhas += nome[i] + "-" + peso[i] + "gr \n" 
     }
 
@@ -68,6 +69,8 @@ window.addEventListener("load", mostrarApostas)
 
 
 frm.btVencedor.addEventListener("click", () => {
+    console.log("teste");
+    
     // se não há apostas armazenadas em Localstorage
     if(!localStorage.getItem("melanciaNome")){
         alert("Não há apostas cadastradas")
@@ -75,7 +78,7 @@ frm.btVencedor.addEventListener("click", () => {
     }
 
     //solicita o peso correto da melância
-    const pesoCorreto = Number("Qual o peso correto da melância ?")
+    const pesoCorreto = Number(prompt("Qual o peso correto da melância ?"))
 
     // se não informou, retorna
     if(pesoCorreto == 0 || isNaN(pesoCorreto)){
