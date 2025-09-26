@@ -4,43 +4,95 @@ const dvQuadro = document.querySelector("#divQuadro")
 frm.addEventListener("submit", (e) => {
     e.preventDefault()
 
-    const tarefa = frm.inTarefa.value 
-
+    const tarefas = frm.inTarefa.value
     const h5 = document.createElement("h5")
-    const texto = document.createTextNode(tarefa) //cria um texto
-    h5.appendChild(texto) //define que texto será filho de h5
-    dvQuadro.appendChild(h5) //e que h5 será filho de divQuadro
+    const text = document.createTextNode(tarefas)
+    h5.appendChild(text)
+    dvQuadro.appendChild(h5)
 
-    frm.inTarefa.value = "" //limpa o campo de edição
-    frm.inTarefa.focus() //joga o cursor neste campo
+    frm.reset()
+    frm.inTarefa.focus()
 })
 
 frm.btSelecionar.addEventListener("click", () => {
-    const tarefas = document.querySelectorAll("h5") //obtém as tags h5 da página
-
-    if(tarefas.length == 0) {
-        alert("Não há tarefas para selecionar") // se não há tarefas, exibe alerta
+    const tarefas = document.querySelectorAll("h5")
+    
+    if (tarefas.length == 0) {
+        alert("Não há tarefas cadastradas")
         return
     }
 
-    let aux = -1 //variável auxiliar para indicar a linha selecionada
+    let aux = -1
 
-    //percorre a lista de elementos h5 inseridos na página, ou seja, tarefas
     for (let i = 0; i < tarefas.length; i++) {
-        //se tag é da class tarefa-selecionada (está selecionada)
-        if(tarefas[i].className == "tarefa-selecionada") {
-            tarefas[i].className = "tarefa-normal" // troca para normal
-            aux = i //muda o valor da variável aux
-            break // sai da operação
+        if (tarefas[i].className == "tarefa-selecionada") {
+            tarefas[i].className = "tarefa-normal"
+            aux = i
+            break
         }
-
     }
 
-    //se a linha que está selecionada é a última, irá voltar para a primeira
-    if(aux == tarefas.length - 1){
+    if(aux == tarefas.length -1) {
         aux = -1
     }
 
-    tarefas[aux + 1].className = "tarefa-selecionada" // muda estilo da próxima linha
+    tarefas[aux + 1].className = "tarefa-selecionada"
+})
 
+
+frm.btRetirar.addEventListener("click", () => {
+    const tarefas = document.querySelectorAll("h5")
+
+    let aux = -1
+
+    tarefas.forEach((tarefa, i) => {
+        if(tarefa.className == "tarefa-selecionada") {
+            aux = i
+        }
+    })
+
+    if (aux == -1) {
+        alert("Selecione uma tarefa para remove-lá")
+        return
+    }
+
+    if (confirm(`Deseja remover a ID:${aux + 1} - ${tarefas[aux].innerText} ?`)) {
+        dvQuadro.removeChild(tarefas[aux])
+    }
+})
+
+
+frm.btGravar.addEventListener("click", () => {
+    const tarefas = document.querySelectorAll("h5")
+    console.log(tarefas);
+    
+    if (tarefas.length == 0) {
+        alert("Não há tarefas para serem salvas")
+        return
+    }
+
+    let dados = "" //armazena os dados
+    tarefas.forEach(tarefa => {
+        dados += tarefa.innerText + ";"
+    })
+
+    localStorage.setItem("tarefasDia", dados.slice(0, -1))
+
+    if (localStorage.getItem("tarefasDia")) {
+        alert("Ok")
+    }
+})
+
+
+window.addEventListener("load", () => {
+    if (localStorage.getItem("tarefasDia")) {
+        const dados = localStorage.getItem("tarefasDia").split(";")
+
+        dados.forEach(dado => {
+            const h5 = document.createElement("h5")
+            const text = document.createTextNode(dado)
+            h5.appendChild(text)
+            dvQuadro.appendChild(h5)
+        })
+    }
 })
