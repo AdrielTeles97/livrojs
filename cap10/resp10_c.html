@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa do brasil</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="./img/exerc.jpg" alt="Copa do brasil" width="450">
+            </div>
+            <div class="col-sm-8">
+                <h1>Copa do brasil - Classificados</h1>
+                <form>
+                    <p>
+                        <label for="inClube">Clube:</label>
+                        <input type="text" class="form-control" required id="inClube">
+                    </p>
+                    <input type="submit" class="btn btn-primary" value="Adicionar">
+                    <input type="button" class="btn btn-secondary"  value="Montar tabela de Jogos">
+                    <input type="reset" class="btn btn-danger" value="Novos clubes">
+                </form>
+                <div class="fst-italic text-end">
+                    <h3>Flamengo</h3>
+                    <h3>Atlético</h3>
+                    <h3>Bahia</h3>
+                </div>
+                <div>
+                    <h2>Tabela de jogos</h2>
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <td>Grêmio</td>
+                            <td>Flamengo</td>
+                        </tr>
+                        <tr>
+                            <td>Atle</td>
+                            <td>Palmeiras</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/resp10_c.js"></script>
+</body>
+</html>
