@@ -38,7 +38,7 @@ const obterCavalo = (num) => {
 
 frm.inCavalo.addEventListener("blur", () => {
     if (frm.inCavalo.value == "") {
-        respCavalo = ""
+        respCavalo.textContent = ""
         return
     }
 
@@ -89,4 +89,53 @@ frm.addEventListener("focus", () => {
     frm.inCavalo.value = ""
     respCavalo.textContent = ""
 })
+
+frm.btResumo.addEventListener("click", () => {
+    // vetor com valores zerados para cada cavalo
+    const somaApostas = [0,0,0,0,0,0]
+
+    //percorre apostas e acumula na posição do cavalo apostado(-1, pois inicia em 0)
+    for (const aposta of apostas) {
+        somaApostas[aposta.cavalo - 1] += aposta.valor
+    }
+
+    //exibe o resultado
+    let resposta = `Nº Cavalo........... R$ Apostado\n${"-".repeat(35)}\n`
+    CAVALOS.forEach((cavalo, i) => {
+        resposta += `${i + 1} ${cavalo.padEnd(20)}`
+        resposta += `${somaApostas[i].toFixed(2).padStart(11)}\n`
+    })
+
+    respLista.textContent = resposta
+})
+
+frm.btGanhador.addEventListener("click", () => {
+    //solicita o número do cavalo ganhador (já converte para número)
+    const ganhador = Number(prompt("Nº do cavalo ganhador: "))
+
+    //para validar o preenchimento do prompt anterior
+    if(isNaN(ganhador) || !validarCavalo(ganhador)) {
+        alert("Cavalo inválido!")
+        return
+    }
+
+    //uso do método reduce para somar o valor das apostas
+    const total = apostas.reduce((acumulador, aposta) => acumulador + aposta.valor, 0)
+
+    //concatena em resumo o resultado a ser exibido na página
+    let resumo = `Resultado Final do Páreo\n${"-".repeat(30)}`
+
+    resumo += `Nº Total de apostas: ${apostas.length}\n`
+    resumo += `Total geral R$: ${total.toFixed(2)}\n\n`
+    resumo += `Nº de apostas: ${contarApostas(ganhador)}\n`
+    resumo += `Total apostado R$: ${totalizarApostas(ganhador).toFixed(2)}`
+
+    respLista.textContent = resumo
+
+    frm.btApostar.disabled = true
+    frm.btGanhador.disabled = true
+    frm.btNovo.focus()
+})
+
+frm.btNovo.addEventListener("click", () => window.location.reload())
 
