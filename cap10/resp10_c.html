@@ -18,29 +18,17 @@
                 <form>
                     <p>
                         <label for="inClube">Clube:</label>
-                        <input type="text" class="form-control" required id="inClube">
+                        <input type="text" class="form-control" id="inClube" required>
                     </p>
                     <input type="submit" class="btn btn-primary" value="Adicionar">
-                    <input type="button" class="btn btn-secondary"  value="Montar tabela de Jogos">
+                    <input type="button" class="btn btn-secondary"  value="Montar tabela de Jogos" id="btMontarTabela">
                     <input type="reset" class="btn btn-danger" value="Novos clubes">
                 </form>
-                <div class="fst-italic text-end">
-                    <h3>Flamengo</h3>
-                    <h3>Atlético</h3>
-                    <h3>Bahia</h3>
-                </div>
-                <div>
+                <div class="fst-italic text-end" id="timesItalic"></div>
+                <div class="d-none" id="tabela-jogos">
                     <h2>Tabela de jogos</h2>
                     <table class="table table-striped table-hover">
-                        <tr>
-                            <td>Grêmio</td>
-                            <td>Flamengo</td>
-                        </tr>
-                        <tr>
-                            <td>Atle</td>
-                            <td>Palmeiras</td>
-                        </tr>
-                        
+                        <tbody id="corpoTabela"></tbody>
                     </table>
                 </div>
             </div>
