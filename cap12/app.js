@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const port = 3001
+const livros = require("./livro")
 
 app.get("/", (req, res) => {
     res.send("Olá... Seja bem vindo!")
@@ -17,6 +18,8 @@ app.post("/filmes", (req, res) => {
     const { titulo, genero } = req.body
     res.send(`Filme: ${titulo} - Gênero: ${genero}, recebido...`)
 })
+
+app.use("/livros", livros)
 
 //exemplo de Middleware
 const log = (req, res, next) => {
